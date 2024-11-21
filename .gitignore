@@ -1,3 +1,4 @@
 bin
 obj
 aoc-crypt.key
+.DS_Store

@@ -22,10 +22,10 @@ class Solution : Solver
         var sum = 0;
         for (var i = 0; i <= p1.Count() - 1; i++)
         {
-            var c1 = p1.Skip(i).First();
-            var c2 = p2.Skip(i).First();
+            var n1 = p1.Skip(i).First();
+            var n2 = p2.Skip(i).First();
 
-            sum += Math.Abs(c1 - c2);
+            sum += Math.Abs(n1 - n2);
         }
 
         return sum;
@@ -40,10 +40,10 @@ class Solution : Solver
         var sum = 0;
         for (var i = 0; i <= p1.Count() - 1; i++)
         {
-            var c1 = p1.Skip(i).First();
-            var c2 = p2.Count(needle => needle.Equals(c1));
+            var n1 = p1.Skip(i).First();
+            var n2 = p2.Count(needle => needle.Equals(n1));
 
-            sum += c1 * c2;
+            sum += n1 * n2;
         }
 
         return sum;

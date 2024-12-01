@@ -15,17 +15,16 @@ class Solution : Solver
     {
         var line = input.Split("\n");
         var p1 = line.Select(l => int.Parse(l.Split("   ").First()))
-            .OrderBy(i => i);
+            .OrderBy(i => i)
+            .ToList();
         var p2 = line.Select(l => int.Parse(l.Split("   ").Last()))
-            .OrderBy(i => i);
+            .OrderBy(i => i)
+            .ToList();
 
         var sum = 0;
         for (var i = 0; i <= p1.Count() - 1; i++)
         {
-            var n1 = p1.Skip(i).First();
-            var n2 = p2.Skip(i).First();
-
-            sum += Math.Abs(n1 - n2);
+            sum += Math.Abs(p1[i] - p2[i]);
         }
 
         return sum;
@@ -37,15 +36,6 @@ class Solution : Solver
         var p1 = line.Select(l => int.Parse(l.Split("   ").First()));
         var p2 = line.Select(l => int.Parse(l.Split("   ").Last()));
 
-        var sum = 0;
-        for (var i = 0; i <= p1.Count() - 1; i++)
-        {
-            var n1 = p1.Skip(i).First();
-            var n2 = p2.Count(needle => needle.Equals(n1));
-
-            sum += n1 * n2;
-        }
-
-        return sum;
+        return p1.Select(i1 => i1 * p2.Count(needle => needle.Equals(i1))).Sum();
     }
 }

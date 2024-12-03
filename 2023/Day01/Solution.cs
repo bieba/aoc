@@ -1,10 +1,5 @@
 namespace AdventOfCode.Y2023.Day01;
-
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
 [ProblemName("Trebuchet?!")]
@@ -12,18 +7,9 @@ class Solution : Solver {
 
     Regex NumberRegex = new Regex(@"\d");
     Regex NumberAndWordsRegex = new Regex(@"(?=(\d|one|two|three|four|five|six|seven|eight|nine))");
-    Dictionary<string, int> WordToNumber = new Dictionary<string, int>(){
-
-    };
 
     public object PartOne(string input) {
-        var sum = 0;
-
-        foreach (var line in input.Split("\n")) {
-            sum += calculateSum(line);
-        }
-
-        return sum;
+        return input.Split("\n").Select(calculateSum);
     }
 
     public object PartTwo(string input) {
